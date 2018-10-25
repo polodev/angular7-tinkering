@@ -9,8 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserComponent implements OnInit {
 
-  user: Object;
-  userId: Object;
+  user: any;
+  userId: any;
   constructor(private ds: DataService, private ar: ActivatedRoute) {
     this.ar.params.subscribe(params => this.userId = params.id);
    }
