@@ -32,20 +32,31 @@ import { trigger, style, transition, animate, keyframes, query, stagger } from '
     ])
   ]
 })
+interface UsersData {
+  'page': number;
+  'per_page': number;
+  'total': number;
+  'total_pages': number;
+  'data': object;
+}
 export class HomeComponent implements OnInit {
 
   h1Style: Boolean = true;
   constructor(private data: DataService) { }
   users: Object;
   loading: Boolean = false;
+  hasNext = false;
+  hasPrev = false;
 
   ngOnInit() {
     // this.data.getUsers();
     this.loading = true;
-    this.data.getUsers().subscribe(data => {
+    this.data.getUsers().subscribe((data: UsersData) => {
       console.log('data', data);
       this.users = data;
       this.loading = false;
+      data.page === 1 ? this.hasPrev = false : this.hasPrev = true;
+      data.page < data.total_pages ? this.hasNext = true : this.hasNext = false;
     });
   }
   clickMe() {
