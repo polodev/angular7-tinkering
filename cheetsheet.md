@@ -108,6 +108,66 @@ export class SidebarComponent implements OnInit {
 }
 ~~~
 
+# angular animation
 
+~~~bash
+npm install @angular/animations@latest --save
+~~~
+
+~~~js
+// /src/app/app.module.ts:
+// Other imports removed for brevity
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+@NgModule({
+  ...
+  imports: [
+    // other modules removed for brevity
+    BrowserAnimationsModule
+  ],
+})
+~~~
+
+~~~js
+// /src/app/users/users.component.ts
+import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
+
+@Component({
+  selector: 'app-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.scss'],
+
+  // Add this:
+  animations: [
+    trigger('listStagger', [
+      transition('* <=> *', [
+        query(
+          ':enter',
+          [
+            style({ opacity: 0, transform: 'translateY(-15px)' }),
+            stagger(
+              '50ms',
+              animate(
+                '550ms ease-out',
+                style({ opacity: 1, transform: 'translateY(0px)' })
+              )
+            )
+          ],
+          { optional: true }
+        ),
+        query(':leave', animate('50ms', style({ opacity: 0 })), {
+          optional: true
+        })
+      ])
+    ])
+  ]
+})
+
+~~~
+
+~~~html
+<!-- /src/app/users/users.component.html -->
+<ul [@listStagger]="users$">
+~~~
 
 

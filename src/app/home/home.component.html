@@ -1,7 +1,7 @@
 
 <h1>Users</h1>
 
-<ul *ngIf="users">
+<ul [@listStagger]="users" *ngIf="users">
   <li *ngFor="let user of users.data">
     <a [routerLink]="['/user', user.id]">
       <img [src]="user.avatar">
