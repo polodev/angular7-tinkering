@@ -1,0 +1,20 @@
+
+<h1>Users</h1>
+
+<ul *ngIf="users">
+  <li *ngFor="let user of users.data">
+    <a [routerLink]="['/user', user.id]">
+      <img [src]="user.avatar">
+      <p>{{ user.first_name }} {{ user.last_name }}</p>
+
+    </a>
+  </li>
+</ul>
+
+<h1 [class.gray]="h1Style">Event binding testing</h1>
+<h1 [ngClass]="{'gray': h1Style, 'large': !h1Style}" >Home 1</h1>
+<h1 [style.color]="h1Style ? 'red' : 'black' ">hello world </h1>
+<p>
+  angular event bindings
+  <button (click)="clickMe()" >Click me</button>
+</p>
