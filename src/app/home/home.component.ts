@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
+import { trigger, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
 
 
 
@@ -37,12 +37,15 @@ export class HomeComponent implements OnInit {
   h1Style: Boolean = true;
   constructor(private data: DataService) { }
   users: Object;
+  loading: Boolean = false;
 
   ngOnInit() {
     // this.data.getUsers();
+    this.loading = true;
     this.data.getUsers().subscribe(data => {
       console.log('data', data);
       this.users = data;
+      this.loading = false;
     });
   }
   clickMe() {
