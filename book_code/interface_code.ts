@@ -80,12 +80,12 @@ myArr = ['bob', 'fred'];
 
 // class interface
 interface ClockInterface {
-  currentTime: Date,
+  currentTime: Date;
   setTime(d: Date);
 }
 
 class Clock implements ClockInterface {
-  constructor(h: number; m: number){};
+  constructor(h: number, m: number) {};
   currentTime: Date;
   setTime(d: Date) {
     this.currentTime = d;
@@ -102,6 +102,13 @@ interface Square extends Shape {
 let square = <Square>{};
 square.color = 'blue';
 square.sideLength = 10;
+
+
+let square2 = <Square>{
+  color: 'red',
+  sideLength: 5,
+};
+
 
 
 
