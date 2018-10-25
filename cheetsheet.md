@@ -80,5 +80,34 @@ export class SidebarComponent implements OnInit {
 ~~~
 
 
+# change output path dist
+~~~js
+// changed following line form angular.json file
+// "outputPath": "docs",
+"build": {
+  "builder": "@angular-devkit/build-angular:browser",
+  "options": {
+    "outputPath": "docs",
+    "baseHref" : "",
+    "deployUrl": "angular7-tinkering",
+  }
+}
+~~~
+
+# change base url in angular
+
+~~~js
+// deployUrl is my baseUrl
+"build": {
+  "builder": "@angular-devkit/build-angular:browser",
+  "options": {
+    "outputPath": "docs",
+    "baseHref" : "",
+    "deployUrl": "/angular7-tinkering/",
+  }
+}
+~~~
+
+
 
 
