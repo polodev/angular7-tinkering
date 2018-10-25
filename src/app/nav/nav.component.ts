@@ -11,9 +11,16 @@ export class NavComponent implements OnInit {
   appTitle = 'myapp';
   currentUrl: string;
   constructor(private router: Router) {
-    router.events.subscribe(() => {
-      this.currentUrl = router.url;
+    // router.events.subscribe(() => {
+    //   this.currentUrl = router.url;
+    // });
+
+    router.events.subscribe(event => {
+        if (event instanceof NavigationEnd) {
+          this.currentUrl = event.url;
+        }
     });
+
   }
   ngOnInit() {
   }
